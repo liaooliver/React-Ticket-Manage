@@ -5,7 +5,7 @@ import Banner from '../components/home/Banner';
 import CardRecent from '../components/home/Card_Recent';
 import CardNotice from '../components/home/Card_Notice';
 
-import { NoticeContext } from '../hooks/NoticeContext';
+import { NoticeContext } from '../hooks/context/NoticeContext';
 
 const Home = () => {
 

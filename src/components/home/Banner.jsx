@@ -22,7 +22,7 @@ const Banner = () => {
                     <h5 className="text-2xl">Welcome to Ticket Management System! Let's get started!</h5>
                     <p>Get started Creating the Ticket, and more function in your System.</p>
                     <p className="py-3">
-                        <Button event={btnClick} color="blue" isDark={false} path="/creating">Create Ticket</Button>
+                        <Button event={btnClick} color="blue" isDark={false} path="/create">Create Ticket</Button>
                     </p>
                     <p>Going to see more Tickets.</p>
                     <p className="pt-3">

@@ -4,8 +4,7 @@ import Badge from '../util/Badge';
 import Ping from '../util/Ping';
 import Radio from '../util/Radio';
 
-import { NoticeContext } from '../../hooks/NoticeContext';
-
+import { NoticeContext } from '../../hooks/context/NoticeContext';
 
 const position = {
     top: '-5px',
@@ -14,7 +13,6 @@ const position = {
 
 const CardNotice = ({ data }) => {
 
-    
     const { title, state, alert, deadline, index } = data;
     const { notices, removeNotices } = useContext(NoticeContext);
     const [checked, setChecked] = useState(false);

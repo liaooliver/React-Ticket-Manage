@@ -5,30 +5,35 @@ const BtnGroup = () => {
 
     const [inits] = useState([
         {
+            title: 'All',
+            amount: 30,
+        },
+        {
             title: 'Pending',
-            among: 10,
+            amount: 10,
         },
         {
             title: 'Active',
-            among: 10,
+            amount: 10,
         },
         {
             title: 'Close',
-            among: 10,
-        },
+            amount: 10,
+        }
     ])
 
     return (
         <ul className="border flex">
             {
-                inits.map(init => <li key={uuid()} className="p-2 px-3 border-r last:border-r-0 hover:bg-gray-100">
-                    <button>
+                inits.map(init => <li key={uuid()} className=" border-r last:border-r-0 hover:bg-gray-100">
+                    <button className="p-2 px-3">
                         <span className="text-base">{init.title}</span>
-                        <span className="text-sm">({init.among})</span>
+                        <span className="text-sm">({init.amount})</span>
                     </button>
                 </li>)
             }
-        </ul>);
+        </ul>
+    );
 }
 
 export default BtnGroup;

@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import noticeReduce from './NoticeReduce'
+import noticeReduce from '../reduce/NoticeReduce'
 export const NoticeContext = createContext();
 
 const init = [
