@@ -32,9 +32,9 @@ const Main = () => {
           <div className="max-w-6xl mx-auto px-8 py-6">
             <NoticeContextProvider>
               <Switch>
+                <Route path="/create" component={Create} />
                 <Route exact path="/overview" component={Overview} />
                 <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/create" component={Create} />
                 <Route exact path="/" component={Home} />
               </Switch>
             </NoticeContextProvider>

@@ -10,19 +10,20 @@ const formObj = {
     description: '',
     principal: '',
     deadline: '',
-    creator: ''
+    creator: '',
+    createtime: new Date()
 }
 
 const FormContextProvider = ({ children }) => {
     
-    const [forms, dispatch] = useReducer(formReduce, formObj);
+    const [formData, dispatch] = useReducer(formReduce, formObj);
 
     function addFormData(payload) {
         dispatch({ type: 'ADD_FORMDATA', payload })
     }
 
     return (
-        <FormContext.Provider value={{ forms, addFormData }}>{ children }</FormContext.Provider>
+        <FormContext.Provider value={{ formData, addFormData }}>{ children }</FormContext.Provider>
     )
 }
 export default FormContextProvider

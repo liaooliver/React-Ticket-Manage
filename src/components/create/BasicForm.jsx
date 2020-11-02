@@ -1,33 +1,18 @@
-import React, { useContext } from 'react';
-import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 
-import { FormContext } from '../../hooks/context/FormContext';
 import ErrorText from '../util/ErrorText';
 
-const position = {
-    bottom: `-28px`
-}
+const BasicForm = ({ formData, useform, onSubmit }) => {
 
-const BasicForm = ({ next }) => {
-
-    const history = useHistory()
-    const { forms, addFormData } = useContext(FormContext)
-    const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => {
-        addFormData(data)
-        next('2')
-        history.push('/create/assigned');
-    };
-    watch(errors)
+    const { register, handleSubmit, errors } = useform;
 
     return (
         <div className="w-full max-w-md mx-auto">
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleSubmit(data => onSubmit(data, '/create/assigned?step=2'))} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <h5 className="font-mono text-gray-700 font-medium text-xl">Create a new Ticket</h5>
                 <div className="mt-4 mb-8 relative">
                     <input name="subject"
-                        defaultValue={forms.subject}
+                        defaultValue={formData.subject}
                         ref={register({ required: true })}
                         className={`${errors.subject ? 'border-red-600' : 'focus:shadow-outline'} focus:outline-none shadow appearance-none border rounded w-full p-4 text-gray-700 leading-tight`}
                         type="text"
@@ -37,7 +22,7 @@ const BasicForm = ({ next }) => {
                 <div className="flex mb-8">
                     <div className="w-1/2 pr-1 relative">
                         <div className="inline-block relative w-full">
-                            <select name="project" defaultValue={forms.project} ref={register({ required: true })} className={`${errors.project ? 'border-red-600' : 'focus:shadow-outline'} block text-gray-700 appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 p-4 pr-8 rounded shadow leading-tight focus:outline-none`}>
+                            <select name="project" defaultValue={formData.project} ref={register({ required: true })} className={`${errors.project ? 'border-red-600' : 'focus:shadow-outline'} block text-gray-700 appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 p-4 pr-8 rounded shadow leading-tight focus:outline-none`}>
                                 <option value="">Select Project</option>
                                 <option value="taya">Taya</option>
                                 <option value="austech">Austech</option>
@@ -50,7 +35,7 @@ const BasicForm = ({ next }) => {
                     </div>
                     <div className="w-1/2 pl-1 relative">
                         <input name="module"
-                            defaultValue={forms.module}
+                            defaultValue={formData.module}
                             ref={register({ required: true })}
                             className={`${errors.module ? 'border-red-600' : 'focus:shadow-outline'} focus:outline-none shadow appearance-none border rounded w-full p-4 text-gray-700 leading-tight`}
                             type="text"
@@ -59,7 +44,7 @@ const BasicForm = ({ next }) => {
                     </div>
                 </div>
                 <div className="mb-6">
-                    <textarea defaultValue={forms.description} name="description" ref={register} rows="12" className="shadow appearance-none border rounded w-full p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Description..." />
+                    <textarea defaultValue={formData.description} name="description" ref={register} rows="12" className="shadow appearance-none border rounded w-full p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Description..." />
                 </div>
                 <div className="flex items-center justify-center">
                     <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

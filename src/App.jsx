@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
  
 import Main from './pages/Main';
 import Login from './pages/Login';
+import stringify from 'uuid/dist/stringify';
 
 function App() {
 
@@ -9,6 +10,10 @@ function App() {
   const pass = () => {
     setisAuth(!isAuth)
   }
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify('Oliver'))
+  },[])
 
   return (
     <div>
