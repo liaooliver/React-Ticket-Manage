@@ -13,7 +13,7 @@ const position = {
 
 const CardNotice = ({ data }) => {
 
-    const { title, state, alert, deadline, index } = data;
+    const { title, status, alert, deadline, index } = data;
     const { notices, removeNotices } = useContext(NoticeContext);
     const [checked, setChecked] = useState(false);
     const pickupTicket = (event) => {
@@ -33,7 +33,7 @@ const CardNotice = ({ data }) => {
         </div>
 
         <div className="flex justify-between items-center pl-8">
-            <Badge code={state} />
+            <Badge code={status} />
             <span className="relative">
                 {
                     alert ? <Ping position={position} /> : null

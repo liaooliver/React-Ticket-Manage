@@ -5,11 +5,11 @@ import Badge from '../util/Badge';
 
 const ListItem = ({ data }) => {
     
-    const { remainer, alert, due, subject, principal, state, id, completed } = data;
+    const { remainer, alert, due, subject, principal, status, id, completed } = data;
 
     return (<li className="w-full shadow rounded-md p-3 mb-3 last:mb-0 bg-white">
         <div className="flex justify-between items-start mb-3">
-            <Badge code={state} />
+            <Badge code={status} />
             <div className="text-sm">
                 {
                     !completed ? <><span className="pr-1">deadline:{due},</span>
@@ -23,7 +23,7 @@ const ListItem = ({ data }) => {
         <div className="flex justify-between items-center">
             <span className="text-sm text-gray-700 uppercase">principal: {principal}</span>
             <span>
-                <LButton path={`/operating?id=${id}`} color="blue">Forward</LButton>
+                <LButton path={`/operating?id=${id}&status=${status}`} color="blue">Forward</LButton>
             </span>
         </div>
     </li> );

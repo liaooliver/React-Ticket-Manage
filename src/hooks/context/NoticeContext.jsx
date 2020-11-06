@@ -6,14 +6,14 @@ const init = [
     {
         index: 1,
         title: 'no1 notification',
-        state: 1,
+        status: 1,
         alert: false,
         deadline: '2020/10/30'
     },
     {
         index: 2,
         title: 'no2 notification',
-        state: 4,
+        status: 4,
         alert: true,
         deadline: '2020/10/30'
     }

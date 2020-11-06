@@ -15,30 +15,43 @@ function useQuery() {
 const Operating = () => {
 
     const [setCode] = useState(1)
-    const { ticket, getTicket } = useContext(OverviewContext)
+    const { ticket, getTicket, clearTicket } = useContext(OverviewContext)
     const query = useQuery().get('id')
+    const status = useQuery().get('status')
 
     useEffect(() => {
-        getTicket(query)
-    },[query])
+        return () => {
+            clearTicket()
+        }
+    }, [])
+
+    useEffect(() => {
+        getTicket(query, status)
+    }, [query])
 
     return (
         <div className="max-w-xl mx-auto">
-            <div className="w-full flex justify-between">
-                <span>
-                    <Badge code={ticket.code ? ticket.code : 0} />
-                    <span className="text-sm text-gray-100 uppercase px-2 bg-green-500 rounded-md ml-2">5 days</span>
-                </span>
-                <span>
-                    <button className="bg-red-600 text-red-100 p-1 rounded ml-auto">Close</button>
-                    {
-                        ticket.code === 1 ? <button className="bg-blue-600 text-green-100 p-1 rounded ml-3" onClick={() => setCode(2)}>Launch</button> : null
-                    }
-                </span>
-            </div>
-            <Ticket data={ticket} />
-            <Apply setCode={setCode} />
-            <CheckForm setCode={setCode} />
+
+            {
+                Object.keys(ticket).length > 0 ? <>
+                    <div className="w-full flex justify-between">
+                        <span>
+                            <Badge code={ticket.status ? ticket.status : 0} />
+                            <span className="text-sm text-gray-100 uppercase px-2 bg-green-500 rounded-md ml-2">{ticket.remainer} days</span>
+                        </span>
+                        <span>
+                            <button className="bg-red-600 text-red-100 p-1 rounded ml-auto">Close</button>
+                            {
+                                ticket.status === 1 ? <button className="bg-blue-600 text-green-100 p-1 rounded ml-3" onClick={() => setCode(2)}>Launch</button> : null
+                            }
+                        </span>
+                    </div>
+                    <Ticket data={ticket} />
+                    <Apply setCode={setCode} />
+                    <CheckForm setCode={setCode} /></>
+                    : <h1>Loading...</h1>
+            }
+
         </div>
     );
 }
