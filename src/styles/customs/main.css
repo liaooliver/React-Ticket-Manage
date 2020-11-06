@@ -1,0 +1,19 @@
+.side{
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.content{
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+@media (max-width: 1024px){
+    .side{
+        transform: translateX(-250px);
+    }
+    .content{
+        margin-left: 0px;
+        width: 100%;
+    }
+}

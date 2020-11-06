@@ -4,21 +4,23 @@ import Home from './Home';
 import Overview from './Overview';
 import Dashboard from './Dashboard';
 import Create from './Create';
+import Operating from './Operating';
 
 import ImageContainer from '../components/util/ImageContainer';
 import LinkItem from '../components/util/LinkItem';
 import SettingGroup from '../components/util/SettingGroup';
 
 import NoticeContextProvider from '../hooks/context/NoticeContext';
+import OverviewContextProvider from '../hooks/context/OverviewContext';
 
 import logo from '../assets/images/task.png';
-
+import '../styles/customs/main.css';
 
 const Main = () => {
   return (
     <Router>
-      <div className="relative flex justify-end">
-        <div className="flex flex-col p-3 w-2/12 h-screen shadow-md fixed inset-y-0 left-0">
+      <div className="relative">
+        <div className="side flex flex-col p-3 h-screen shadow-md fixed inset-y-0 left-0 transition-all duration-200">
           <Link to="/">
             <ImageContainer src={logo} size="100" text="TASK" container="w-3/12" margin='my-4' />
           </Link>
@@ -28,15 +30,18 @@ const Main = () => {
           <SettingGroup />
         </div>
 
-        <div className="w-10/12">
-          <div className="max-w-6xl mx-auto px-8 py-6">
+        <div className="content transition-all duration-200">
+          <div className="max-w-6xl mx-auto px-8 pt-6">
             <NoticeContextProvider>
-              <Switch>
-                <Route path="/create" component={Create} />
-                <Route exact path="/overview" component={Overview} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/" component={Home} />
-              </Switch>
+              <OverviewContextProvider>
+                <Switch>
+                  <Route path="/create" component={Create} />
+                  <Route path="/operating" component={Operating} />
+                  <Route path="/overview" component={Overview} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route exact path="/" component={Home} />
+                </Switch>
+              </OverviewContextProvider>
             </NoticeContextProvider>
           </div>
         </div>

@@ -49,7 +49,7 @@ const AssignForm = ({ formData, useform, previous, onSubmit }) => {
                 </div>
                 <div className="flex items-center justify-center">
                     <div className="w-full pr-1">
-                        <button onClick={() => previous('/create?step=1')} className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button onClick={() => previous('/create/start?step=1')} className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Previous Step
                         </button>
                     </div>

@@ -23,9 +23,9 @@ const BtnGroup = () => {
     ])
 
     return (
-        <ul className="border flex">
+        <ul className="border flex bg-white">
             {
-                inits.map(init => <li key={uuid()} className=" border-r last:border-r-0 hover:bg-gray-100">
+                inits.map(init => <li key={uuid()} className=" border-r last:border-r-0 hover:bg-gray-200">
                     <button className="p-2 px-3">
                         <span className="text-base">{init.title}</span>
                         <span className="text-sm">({init.amount})</span>

@@ -23,25 +23,23 @@ const Create = () => {
     }
 
     return (
-        <Router>
-            <div className=" max-w-xl mx-auto">
-                <Progress isActive={step} />
-                <FormContextProvider>
-                    <Switch>
-                        <Route path={`${path}/review`}>
-                            <ReviewWithCommon getQuery={getQuery} />
-                        </Route>
-                        <Route path={`${path}/assigned`}>
-                            <AssignFormWithCommon getQuery={getQuery} />
-                        </Route>
-                        <Route exact={true} path={`${path}`}>
-                            {/* <ReviewWithCommon getQuery={getQuery} /> */}
-                            <BasicFormWithCommon getQuery={getQuery} />
-                        </Route>
-                    </Switch>
-                </FormContextProvider>
-            </div>
-        </Router>
+        <div className="max-w-xl mx-auto">
+            <Progress isActive={step} />
+            <FormContextProvider>
+                <Switch>
+                    <Route path={`${path}/start`}>
+                        {/* <ReviewWithCommon getQuery={getQuery} /> */}
+                        <BasicFormWithCommon getQuery={getQuery} />
+                    </Route>
+                    <Route path={`${path}/assigned`}>
+                        <AssignFormWithCommon getQuery={getQuery} />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <ReviewWithCommon getQuery={getQuery} />
+                    </Route>
+                </Switch>
+            </FormContextProvider>
+        </div>
      );
 }
  

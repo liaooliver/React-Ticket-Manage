@@ -8,7 +8,7 @@ const BasicForm = ({ formData, useform, onSubmit }) => {
 
     return (
         <div className="w-full max-w-md mx-auto">
-            <form onSubmit={handleSubmit(data => onSubmit(data, '/create/assigned?step=2'))} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleSubmit(data => onSubmit(data, '/create/assigned?step=2'))} className="bg-white shadow-md rounded px-8 pt-6 pb-8">
                 <h5 className="font-mono text-gray-700 font-medium text-xl">Create a new Ticket</h5>
                 <div className="mt-4 mb-8 relative">
                     <input name="subject"

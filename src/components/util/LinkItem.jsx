@@ -14,7 +14,7 @@ const LinkItem = () => {
             title: 'Overview'
         },
         {
-            path: '/create/?step=1',
+            path: '/create/start?step=1',
             title: 'Create Ticket'
         }
     ]

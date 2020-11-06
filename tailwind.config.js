@@ -10,6 +10,7 @@ module.exports = {
   variants: {
     outline: ['responsive', 'focus', 'hover', 'active'],
     boxShadow: ['responsive', 'hover', 'focus'],
+    margin: ['responsive', 'last'],
   },
   plugins: [],
 }

@@ -1,0 +1,15 @@
+.custom_animate_out{
+    animation-name: zoom-out;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode: forwards;    
+}
+
+@keyframes zoom-out{
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(0) rotate(720deg);
+    }
+}
