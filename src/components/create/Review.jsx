@@ -15,7 +15,6 @@ const center = {
 
 const Review = ({ formData, postFormData, previous, useform }) => {
 
-    const [unmounted, setUnmounted] = useState(true)
     const { handleSubmit } = useform;
     const [upload, setUpload] = useState(false);
     const [isDone, setIsDone] = useState(false);
@@ -34,28 +33,15 @@ const Review = ({ formData, postFormData, previous, useform }) => {
     const onSubmit = async () => {
         setUpload(true)
         const result = await postFormData()
-        console.log(result)
         if (result['result'] === 'succcess') {
             setUpload(false)
             setIsDone(true)
-        } else {
-            console.log(result['result'])
         }
     };
 
-    useEffect(() => {
-
-        // if (!unmounted) console.log("UNMOUNTED => Review")
-        // console.log("BEFORE_UNMOUNTED => Review")
-        
-        // return function clearup() {
-        //     console.log("CLEAR_UP => ", formData)
-        //     setUnmounted(false)
-        // }
-    })
 
     useEffect(() => {
-        // let mounted = true
+
         window.addEventListener('animationend', function (e) {
             setIsSuccess(true)
         })
@@ -67,12 +53,10 @@ const Review = ({ formData, postFormData, previous, useform }) => {
             title: key
         }))
         setForm(data)
-        // if (unmounted) {
-        // }
-        console.log("畫面變了")
-        // return function cleanup() {
-        //     mounted = false
-        // }
+
+        return function cleanup() {
+            console.log("CLEAR UP")
+        }
     }, [])
 
     return (

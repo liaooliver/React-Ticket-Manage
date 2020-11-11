@@ -4,6 +4,8 @@ export default (state, action) => {
             return [...state, ...action.payload]
         case 'FETCH_DATA':
             return state;
+        case 'CLEAR_DATA':
+            return []
         case 'ERROR':
             return state;
         default: return state;

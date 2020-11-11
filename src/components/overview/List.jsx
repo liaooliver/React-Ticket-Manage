@@ -1,18 +1,22 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import uuid from 'uuid/dist/v1';
 import ListItem from './ListItem';
 
 import { OverviewContext } from '../../hooks/context/OverviewContext';
 
 const List = () => {
-    
-    const { lists, getSheet } = useContext(OverviewContext)
+
+    const { lists, getSheet, clearList } = useContext(OverviewContext)
 
     useEffect(() => {
         getSheet()
+        return () => {
+            clearList()
+        };
     }, [])
 
-    return ( 
+
+    return (
         <ul>
             {
                 lists.map(list => <ListItem key={uuid()} data={list} />)
@@ -20,5 +24,5 @@ const List = () => {
         </ul>
     );
 }
- 
+
 export default List;

@@ -19,7 +19,8 @@ import '../styles/customs/main.css';
 const Main = () => {
   return (
     <Router>
-      <div className="relative">
+      <div className="flex">
+        {/* side bar */}
         <div className="side flex flex-col p-3 h-screen shadow-md fixed inset-y-0 left-0 transition-all duration-200">
           <Link to="/">
             <ImageContainer src={logo} size="100" text="TASK" container="w-3/12" margin='my-4' />
@@ -29,8 +30,8 @@ const Main = () => {
           </nav>
           <SettingGroup />
         </div>
-
-        <div className="content transition-all duration-200">
+        {/* content */}
+        <div className="content transition-all duration-200 overflow-auto">
           <div className="max-w-6xl mx-auto px-8 pt-6">
             <NoticeContextProvider>
               <OverviewContextProvider>

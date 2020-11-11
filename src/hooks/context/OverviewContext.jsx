@@ -39,7 +39,6 @@ const OverviewContextProvider = ({ children }) => {
     }
 
     const fetchTicket = async (id, status) => {
-        console.log(status)
         await fetch(`http://localhost:3001/getSheet/ticket/${id}?status=${status}`)
             .then(response => response.json())
             .then(response => {
@@ -58,6 +57,12 @@ const OverviewContextProvider = ({ children }) => {
         fetchTicket(id, status)
     }
 
+    const clearList = () => {
+        listDispatch({
+            type: 'CLEAR_DATA'
+        })
+    }
+
     const clearTicket = () => {
         ticketDispatch({
             type: 'CLEAR_DATA'
@@ -65,7 +70,7 @@ const OverviewContextProvider = ({ children }) => {
     }
 
     return (
-        <OverviewContext.Provider value={{ lists, ticket, getSheet, getTicket, clearTicket }}>{children}</OverviewContext.Provider>
+        <OverviewContext.Provider value={{ lists, ticket, getSheet, getTicket, clearTicket, clearList }}>{children}</OverviewContext.Provider>
     )
 }
 
