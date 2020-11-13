@@ -24,7 +24,7 @@ const OverviewContextProvider = ({ children }) => {
     })
 
     const fetchSheet = async () => {
-        if(lists.length > 0) return
+        if (lists.length > 0) return
         await fetch('http://localhost:3001/getSheet/all')
             .then(response => response.json())
             .then(response => {
@@ -69,8 +69,17 @@ const OverviewContextProvider = ({ children }) => {
         })
     }
 
+    const launchTicket = (id) => {
+        // 要接更新狀態的 API
+        fetch(`http://localhost:3001/postSheet/launch?${id}`)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+            })
+    }
+
     return (
-        <OverviewContext.Provider value={{ lists, ticket, getSheet, getTicket, clearTicket, clearList }}>{children}</OverviewContext.Provider>
+        <OverviewContext.Provider value={{ lists, ticket, getSheet, getTicket, clearTicket, clearList, launchTicket }}>{children}</OverviewContext.Provider>
     )
 }
 

@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import uuid from 'uuid/dist/v1';
 
 import Banner from '../components/home/Banner';
-import CardRecent from '../components/home/Card_Recent';
 import CardNotice from '../components/home/Card_Notice';
+import ControlledAccordions from '../components/util/ControlledAccordions';
 
 import { NoticeContext } from '../hooks/context/NoticeContext';
 
@@ -19,6 +19,11 @@ const Home = () => {
             index: 4,
             title: 'build a platform for setting config system',
             content: "Standardize DB table Name:EX-6_Main has no the table of cached.EX-6_Main.Energy for PowerConsumption in MySQL and Mongo Is 'cached.EM.EM-Ex6' equal to 'cached.EX-6_Main.Energy'?"
+        },
+        {
+            index: 5,
+            title: 'build a platform for setting config system',
+            content: "Standardize DB table Name:EX-6_Main has no the table of cached.EX-6_Main.Energy for PowerConsumption in MySQL and Mongo Is 'cached.EM.EM-Ex6' equal to 'cached.EX-6_Main.Energy'?"
         }
     ])
 
@@ -30,11 +35,7 @@ const Home = () => {
         <div className="w-full flex my-4">
             <div className="w-3/5 pr-3">
                 <h5 className="text-xl mb-2">The latest five Ticket</h5>
-                <ul className="p-3 bg-blue-100 rounded-md">
-                    {
-                        data.length > 0 ? data.map(item => <CardRecent key={uuid()} data={item} />) : <p>No Ticket assigned yet</p>
-                    }
-                </ul>
+                <ControlledAccordions data={data}></ControlledAccordions>    
             </div>
             <div className="w-2/5 pl-3">
                 <h5 className="text-xl mb-2">Your notification</h5>

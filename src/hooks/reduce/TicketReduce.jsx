@@ -3,7 +3,11 @@ export default (state, action) => {
         case 'FETCH_DATA':
             return { ...action.payload };
         case 'CLEAR_DATA':
-            return { }
+            return {}
+        case 'LAUNCH':
+            state['status'] = "2";
+            console.log(state)
+            return state
         default: return state;
     }
 }

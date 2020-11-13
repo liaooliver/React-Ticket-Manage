@@ -15,10 +15,10 @@ function useQuery() {
 const Operating = () => {
 
     const [setCode] = useState(1)
-    const { ticket, getTicket, clearTicket } = useContext(OverviewContext)
+    const { ticket, getTicket, clearTicket, launchTicket } = useContext(OverviewContext)
     const query = useQuery().get('id')
     const status = useQuery().get('status')
-
+    
     useEffect(() => {
         return () => {
             clearTicket()
@@ -42,7 +42,7 @@ const Operating = () => {
                         <span>
                             <button className="bg-red-600 text-red-100 p-1 rounded ml-auto">Close</button>
                             {
-                                ticket.status === 1 ? <button className="bg-blue-600 text-green-100 p-1 rounded ml-3" onClick={() => setCode(2)}>Launch</button> : null
+                                ticket.status === "1" ? <button className="bg-blue-600 text-green-100 p-1 rounded ml-3" onClick={() => launchTicket(ticket.id)}>Launch</button> : null
                             }
                         </span>
                     </div>
