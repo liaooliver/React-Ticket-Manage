@@ -15,7 +15,7 @@ const Banner = () => {
                     <h5 className="text-2xl">Welcome to Ticket Management System! Let's get started!</h5>
                     <p>Get started Creating the Ticket, and more function in your System.</p>
                     <p className="py-3">
-                        <LButton color="blue" isDark={false} path="/create">Create Ticket</LButton>
+                        <LButton color="blue" isDark={false} path="/create/start?step=1">Create Ticket</LButton>
                     </p>
                     <p>Going to see more Tickets.</p>
                     <p className="pt-3">

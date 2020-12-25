@@ -4,7 +4,7 @@ const Ticket = ({ data }) => {
 
     return ( <div className="p-6 rounded-md shadow-md max-w-xl mx-auto my-4 bg-white">
     <h3 className="mb-4 font-mono text-xl text-gray-800 font-bold">
-        <span className="pr-2">{data.id}</span>
+        {/* <span className="pr-2">{data.id}</span> */}
         {data.subject}
     </h3>
     <ul className="w-full flex flex-wrap mb-4">

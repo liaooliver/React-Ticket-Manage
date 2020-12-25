@@ -1,20 +1,21 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-const Apply = ({ setCode }) => {
+const Apply = ({ setCode, postApplyForm, ticket }) => {
 
     const { register, handleSubmit, errors } = useForm();
 
-    const onSubmit = (e) => {
-        console.log(e)
-        setCode(3)
+    const onSubmit = (data) => {
+        postApplyForm(ticket.id, data)
+        console.log(ticket)
+        // setCode(3)
     }
 
     return (<form onSubmit={handleSubmit(onSubmit)} className="p-4 shadow-md rounded-md mb-4 bg-white">
         <h4 className="block text-lg font-medium capitalize text-center py-2">apply Result</h4>
         <div className="mb-8 relative">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="finish">Finish Time</label>
-            <input name="finish" ref={register({ required: true })} type="date" placeholder="Username" className={` w-full p-4 focus:outline-none shadow appearance-none border rounded text-gray-700 leading-tight`} />
+            <input name="finish" disabled={false} ref={register({ required: true })} type="date" placeholder="Username" className={` w-full p-4 focus:outline-none shadow appearance-none border rounded text-gray-700 leading-tight`} />
         </div>
         <div className="mb-8 relative">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="comment">Fill in Result</label>

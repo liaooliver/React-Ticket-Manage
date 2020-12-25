@@ -42,11 +42,25 @@ const OverviewContextProvider = ({ children }) => {
         await fetch(`http://localhost:3001/getSheet/ticket/${id}?status=${status}`)
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 ticketDispatch({
                     type: 'FETCH_DATA',
                     payload: response
                 })
             })
+    }
+    
+    const postApplyForm = async (id, data) => {
+        await fetch(`http://localhost:3001/postSheet/updateForm/${id}`,{
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'content-type': 'application/json' }
+        })
+            .then(response => response.json())
+            .then(response => ticketDispatch({
+                type: 'FETCH_DATA',
+                payload: response
+            }))
     }
 
     const getSheet = () => {
@@ -71,15 +85,27 @@ const OverviewContextProvider = ({ children }) => {
 
     const launchTicket = (id) => {
         // 要接更新狀態的 API
-        fetch(`http://localhost:3001/postSheet/launch?${id}`)
+        fetch(`http://localhost:3001/editSheet/launch?id=${id}`, { method: 'PUT' })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
+                ticketDispatch({
+                    type: 'FETCH_DATA',
+                    payload: response
+                })
             })
     }
 
     return (
-        <OverviewContext.Provider value={{ lists, ticket, getSheet, getTicket, clearTicket, clearList, launchTicket }}>{children}</OverviewContext.Provider>
+        <OverviewContext.Provider value={{
+            lists,
+            ticket,
+            getSheet,
+            getTicket,
+            clearTicket,
+            clearList,
+            launchTicket,
+            postApplyForm
+        }}>{children}</OverviewContext.Provider>
     )
 }
 

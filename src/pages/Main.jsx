@@ -5,6 +5,8 @@ import Overview from './Overview';
 import Dashboard from './Dashboard';
 import Create from './Create';
 import Operating from './Operating';
+import Setting from './Setting';
+import Profile from './Profile';
 
 import ImageContainer from '../components/util/ImageContainer';
 import LinkItem from '../components/util/LinkItem';
@@ -16,7 +18,7 @@ import OverviewContextProvider from '../hooks/context/OverviewContext';
 import logo from '../assets/images/task.png';
 import '../styles/customs/main.css';
 
-const Main = () => {
+const Main = ({ pass }) => {
   return (
     <Router>
       <div className="flex">
@@ -28,7 +30,7 @@ const Main = () => {
           <nav className="w-100 flex-none border-black flex-grow">
             <LinkItem />
           </nav>
-          <SettingGroup />
+          <SettingGroup pass={pass} />
         </div>
         {/* content */}
         <div className="content transition-all duration-200 overflow-auto">
@@ -37,9 +39,11 @@ const Main = () => {
               <OverviewContextProvider>
                 <Switch>
                   <Route path="/create" component={Create} />
-                  <Route path="/operating" component={Operating} />
-                  <Route path="/overview" component={Overview} />
-                  <Route path="/dashboard" component={Dashboard} />
+                  <Route exact path="/setting" component={Setting} />
+                  <Route exact path="/profile" component={Profile} />
+                  <Route exact path="/operating" component={Operating} />
+                  <Route exact path="/overview" component={Overview} />
+                  <Route exact path="/dashboard" component={Dashboard} />
                   <Route exact path="/" component={Home} />
                 </Switch>
               </OverviewContextProvider>

@@ -6,7 +6,6 @@ export default (state, action) => {
             return {}
         case 'LAUNCH':
             state['status'] = "2";
-            console.log(state)
             return state
         default: return state;
     }
